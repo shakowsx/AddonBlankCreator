@@ -1,9 +1,12 @@
 package org.addonblankcreator;
 
-import org.addonblankcreator.Utility.Utility;
+import org.addonblankcreator.Objects.Addon;
+import org.addonblankcreator.Utility.CopyFileFromResources;
+import org.addonblankcreator.Utility.CopyFile;
+import org.addonblankcreator.Utility.CreateFoldersFromFiles;
+import org.addonblankcreator.Utility.FolderCreator;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,82 +15,79 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String addonId = "";
+        // Checking for permission to write to a folder.
+        if (Files.isWritable(Path.of(System.getProperty("user.dir")))) {
+            // has write access.
+            System.out.println("Проверка наличия прав записи в папке " + Path.of(System.getProperty("user.dir")) +
+                    "...[ok]");
+        } else {
+            // no write access.
+            System.out.println("Проверка наличия прав записи в папке" + Path.of(System.getProperty("user.dir")) +
+                    "...[ОШИБКА]");
+            System.out.println("Для создания файлов требуются права на запись. Убедитесь, в наличии прав на запись" +
+                    " и перезапустите программу.");
+            System.exit(0);
+        }
 
-        while (addonId.isEmpty()) {
+        // Addon data collection.
+        Addon addon = new Addon(
+                "",
+                "Cart-Power: Blank addon name",
+                "Cart-Power: Заготовка имени модуля",
+                "Blank description of the addon.",
+                "Заготовка описания модуля."
+                );
+
+        while (addon.id.isEmpty()) {
             System.out.println("Введите id модуля с префиксом \"cp_\" (например cp_addon_name):");
             Scanner console = new Scanner(System.in);
-            addonId = console.nextLine().replaceAll("\\s+","");
-            if (addonId.isEmpty()) {
+            if (console.hasNextLine()) {
+                addon.id = console.nextLine().replaceAll("\\s+","");
+            } else return;
+            if (addon.id.isEmpty()) {
                 System.out.println("Id модуля не введено. Введите id модуля.");
             } else {
                 String actionConfirm = "";
                 boolean valid = true;
                 while (valid) {
-                    System.out.println("Вы уверены, что хотите создать модуль с id \"" + addonId + "\"? Y/N?");
-                    actionConfirm = console.nextLine().toLowerCase();
+                    System.out.println("Вы уверены, что хотите создать модуль с id \"" + addon.id + "\"? Y/N?");
+                    if (console.hasNextLine()) {
+                        actionConfirm = console.nextLine().toLowerCase();
+                    } else return;
                     if (actionConfirm.equals("y")) {
                         valid = false;
                     } else  if (actionConfirm.equals("n")) {
                         valid = false;
-                        addonId = "";
+                        addon.id = "";
                     } else {
                         System.out.println("Пожалуйста, введите Y или N.");
                     }
                 }
             }
         }
-        System.out.println("Id модуля задано: \"" + addonId + "\"");
-        System.out.println("Создаю модуль \"" + addonId + "\"...");
+        System.out.println("Id модуля задано: \"" + addon.id + "\"...[ok]");
+        System.out.println("Создание модуля \"" + addon.id + "\"...");
 
-        String addonNameEn =
-                "Cart-Power: Blank addon name";
-        String addonNameRu =
-                "Cart-Power: Заготовка имени модуля";
-        String addonDescriptionEn =
-                "Blank description of the addon.";
-        String addonDescriptionRu =
-                "Заготовка описания модуля.";
-        String addonDescriptionEndingEn =
-                " Developed by <a target=\\\"_blank\\\" href=\\\"https://cart-power.com/\\\">Cart-Power</a>\"";
-        String addonDescriptionEndingRu =
-                " Разработано <a target=\\\"_blank\\\" href=\\\"https://cart-power.ru/\\\">Cart-Power</a>";
+//        File appAddons = new File(addon.id + "/app/addons/" + addon.id);
+//        File designBackendMediaImagesAddons = new File(addon.id + "/design/backend/media/images/addons/" + addon.id);
+//        String iconInputPath = "static/icon.png";
+//        String iconOutputPath = designBackendMediaImagesAddons + "\\icon.png";
+//        File varLangsEnAddons = new File(addon.id + "/var/langs/en/addons/");
+//        File varLangsRuAddons = new File(addon.id + "/var/langs/ru/addons/");
 
-        File appAddons =
-                new File(addonId + "/app/addons/" + addonId);
-        File designBackendMediaImagesAddons =
-                new File(addonId + "/design/backend/media/images/addons/" + addonId);
-        File iconInputPath =
-                new File("src/main/resources/icon.png");
-        File iconOutputPath =
-                new File(designBackendMediaImagesAddons + "/icon.png");
-        File varLangsEnAddons =
-                new File(addonId + "/var/langs/en/addons/");
-        File varLangsRuAddons =
-                new File(addonId + "/var/langs/ru/addons/");
-        System.out.println("путь: " + Path.of("cp_test/"));
-        if (Files.isWritable(Path.of(System.getProperty("user.dir")))) {
-            System.out.println("Проверка наличия прав на создание папки прошла успешно.");
-        } else {
-            System.out.println("Ошибка! Нет прав на создание папки в " +
-                    System.getProperty("user.dir") + " Программа завершена.");
-            System.exit(0);
-        }
-        appAddons.mkdirs();
-        System.out.println("Папка " + appAddons + " создана успешно.");
-        designBackendMediaImagesAddons.mkdirs();
-        System.out.println("Папка " + designBackendMediaImagesAddons + " создана успешно.");
-        varLangsEnAddons.mkdirs();
-        System.out.println("Папка " + varLangsEnAddons + " создана успешно.");
-        varLangsRuAddons.mkdirs();
-        System.out.println("Папка " + varLangsRuAddons + " создана успешно.");
+        // Writing addon directories.
+        System.out.println("Создание структуры каталога...");
+        Addon.createAddonStructure(addon);
+        FolderCreator folderCreator = new CreateFoldersFromFiles();
+        folderCreator.createFolders(Addon.folderStructure);
 
+        // Writing addon.xml file.
         try {
             BufferedWriter writer = new BufferedWriter(
-                    new FileWriter(addonId + "/app/addons/" + addonId + "/addon.xml"));
+                    new FileWriter(addon.id + "/app/addons/" + addon.id + "/addon.xml"));
             writer.write("<?xml version=\"1.0\"?>");
             writer.write("\n<addon scheme=\"3.0\">");
-            writer.write("\n    <id>" + addonId + "</id>");
+            writer.write("\n    <id>" + addon.id + "</id>");
             writer.write("\n    <version>1.0</version>");
             writer.write("\n    <priority>5000</priority>");
             writer.write("\n    <position>100</position>");
@@ -109,18 +109,21 @@ public class Main {
             throw new RuntimeException(e);
         }
 
+        // Coping addon icon.
+        Addon.iconOutputPath = Addon.folderStructure.get(1) + "\\icon.png";
         try {
-            Utility.copyFile(iconInputPath, iconOutputPath);
-            System.out.println("Файл иконки модуля добавлен успешно.");
-        } catch (IOException e) {
+            CopyFile copyFile = new CopyFileFromResources();
+            copyFile.copy(Addon.iconInputPath,Addon.iconOutputPath);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
+        // Writing language variables files.
         try {
             BufferedWriter writer1 = new BufferedWriter(
-                    new FileWriter(addonId + "/var/langs/en/addons/" + addonId + ".po"));
+                    new FileWriter(addon.id + "/var/langs/en/addons/" + addon.id + ".po"));
             BufferedWriter writer2 = new BufferedWriter(
-                    new FileWriter(addonId + "/var/langs/ru/addons/" + addonId + ".po"));
+                    new FileWriter(addon.id + "/var/langs/ru/addons/" + addon.id + ".po"));
 
             writer1.write("msgid \"\"");
             writer1.write("\nmsgstr \"Project-Id-Version: tygh\"");
@@ -128,15 +131,15 @@ public class Main {
             writer1.write("\n\"Language-Team: English\\n\"");
             writer1.write("\n\"Language: en_US\\n\"");
             writer1.write("\n");
-            writer1.write("\nmsgctxt \"Addons::name::" + addonId+ "\"");
-            writer1.write("\nmsgid \"" + addonNameEn + "\"");
-            writer1.write("\nmsgstr \"" + addonNameEn + "\"");
+            writer1.write("\nmsgctxt \"Addons::name::" + addon.id+ "\"");
+            writer1.write("\nmsgid \"" + addon.nameEn + "\"");
+            writer1.write("\nmsgstr \"" + addon.nameEn + "\"");
             writer1.write("\n");
-            writer1.write("\nmsgctxt \"Addons::description::" + addonId + "\"");
-            writer1.write("\nmsgid \"" + addonDescriptionEn + addonDescriptionEndingEn);
-            writer1.write("\nmsgstr \"" + addonDescriptionEn + addonDescriptionEndingEn);
+            writer1.write("\nmsgctxt \"Addons::description::" + addon.id + "\"");
+            writer1.write("\nmsgid \"" + addon.descriptionEn + Addon.addonDescriptionEndingEn);
+            writer1.write("\nmsgstr \"" + addon.descriptionEn + Addon.addonDescriptionEndingEn);
             writer1.close();
-            System.out.println("Файл языковой переменной EN языка добавлен успешно.");
+            System.out.println("Файл языковой переменной EN языка добавлен...[ok]");
 
             writer2.write("msgid \"\"");
             writer2.write("\nmsgstr \"Project-Id-Version: tygh\"");
@@ -144,18 +147,18 @@ public class Main {
             writer2.write("\n\"Language-Team: Russian\\n\"");
             writer2.write("\n\"Language: ru_RU\\n\"");
             writer2.write("\n");
-            writer2.write("\nmsgctxt \"Addons::name::" + addonId+ "\"");
-            writer2.write("\nmsgid \"" + addonNameRu + "\"");
-            writer2.write("\nmsgstr \"" + addonNameRu + "\"");
+            writer2.write("\nmsgctxt \"Addons::name::" + addon.id+ "\"");
+            writer2.write("\nmsgid \"" + addon.nameRu + "\"");
+            writer2.write("\nmsgstr \"" + addon.nameRu + "\"");
             writer2.write("\n");
-            writer2.write("\nmsgctxt \"Addons::description::" + addonId + "\"");
-            writer2.write("\nmsgid \"" + addonDescriptionEn + addonDescriptionEndingEn);
-            writer2.write("\nmsgstr \"" + addonDescriptionRu + addonDescriptionEndingRu);
+            writer2.write("\nmsgctxt \"Addons::description::" + addon.id + "\"");
+            writer2.write("\nmsgid \"" + addon.descriptionEn + Addon.addonDescriptionEndingEn);
+            writer2.write("\nmsgstr \"" + addon.descriptionRu + Addon.addonDescriptionEndingRu);
             writer2.close();
-            System.out.println("Файл языковой переменной RU языка добавлен успешно.");
+            System.out.println("Файл языковой переменной RU языка добавлен...[ok]");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Создание модуля завершено успешно.");
+        System.out.println("Создание модуля завершено.");
     }
 }
