@@ -1,8 +1,8 @@
 package org.addonblankcreator.Utility;
 
 import java.io.File;
-import java.util.List;
+import java.util.HashMap;
 
 public interface FolderCreator {
-    void createFolders(List<File> foldersStructure);
+    void createFolders(HashMap<String, File> foldersStructure);
 }
