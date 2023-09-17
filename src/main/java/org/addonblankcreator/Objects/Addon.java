@@ -10,13 +10,11 @@ public class Addon {
     private String descriptionEn;
     private String descriptionRu;
     public static final String DESCRIPTION_ENDING_EN =
-            " Developed by <a target=\\\"_blank\\\" href=\\\"https://cart-power.com/\\\">Cart-Power</a>\"";
+            "Developed by <a target=\\\"_blank\\\" href=\\\"https://cart-power.com/\\\">Cart-Power</a>";
     public static final String DESCRIPTION_ENDING_RU =
-            " Разработано <a target=\\\"_blank\\\" href=\\\"https://cart-power.ru/\\\">Cart-Power</a>";
-//    public static final List<File> FOLDER_STRUCTURE = new ArrayList<>();
+            "Разработано <a target=\\\"_blank\\\" href=\\\"https://cart-power.ru/\\\">Cart-Power</a>";
     public static final HashMap<String, File> FOLDER_STRUCTURE = new HashMap<>();
     public static final String ICON_FILE_NAME = "icon.png";
-
     public static final String ICON_INPUT_PATH = "static/" + ICON_FILE_NAME;
     private static String iconOutputPath;
 

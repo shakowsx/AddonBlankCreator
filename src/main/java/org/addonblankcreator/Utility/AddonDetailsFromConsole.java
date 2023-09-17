@@ -18,9 +18,9 @@ public class AddonDetailsFromConsole implements AddonDetails {
                 System.out.println("Id модуля не введено. Введите id модуля.");
             } else {
                 String actionConfirm = "";
-                boolean valid = true;
+                boolean valid = false;
 
-                while (valid) {
+                while (!valid) {
                     System.out.println("Вы уверены, что хотите создать модуль с id \"" + addon.getId() + "\"? Y/N?");
 
                     if (console.hasNextLine()) {
@@ -28,9 +28,9 @@ public class AddonDetailsFromConsole implements AddonDetails {
                     } else return;
 
                     if (actionConfirm.equals("y")) {
-                        valid = false;
+                        valid = true;
                     } else if (actionConfirm.equals("n")) {
-                        valid = false;
+                        valid = true;
                         addon.setId("");
                     } else {
                         System.out.println("Пожалуйста, введите Y или N.");

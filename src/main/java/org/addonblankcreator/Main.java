@@ -3,24 +3,13 @@ package org.addonblankcreator;
 import org.addonblankcreator.Objects.Addon;
 import org.addonblankcreator.Utility.*;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) {
         // Checking for permission to write to a folder.
-        if (Files.isWritable(Path.of(System.getProperty("user.dir")))) {
-            // has write access.
-            System.out.println("Проверка наличия прав записи в папке " + Path.of(System.getProperty("user.dir")) +
-                    "...[ok]");
-        } else {
-            // no write access.
-            System.out.println("Проверка наличия прав записи в папке" + Path.of(System.getProperty("user.dir")) +
-                    "...[ОШИБКА]");
-            System.out.println("Для создания файлов требуются права на запись. Убедитесь, в наличии прав на запись" +
-                    " и перезапустите программу.");
-            System.exit(0);
-        }
+        AccessChecker accessChecker = new FileWriteAccess();
+        accessChecker.checkWriteAccess(Path.of(System.getProperty("user.dir")));
 
         // Addon data collection.
         Addon addon = new Addon(
@@ -42,7 +31,7 @@ public class Main {
         folderCreator.createFolders(Addon.FOLDER_STRUCTURE);
 
         // Writing addon.xml file.
-        Writer writer = new WritingFileFromCode();
+        AddonWriter writer = new WritingFileFromCode();
         writer.writeAddonXML(addon);
 
         // Coping addon icon.
