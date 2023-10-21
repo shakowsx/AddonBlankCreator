@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- The Basics -->
     <groupId>org.addonblankcreator</groupId>
     <artifactId>AddonBlankCreator</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -14,4 +15,40 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <!-- Build Settings -->
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>org.addonblankcreator.Main</mainClass>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <!-- More Project Information -->
+    <name>AddonBlankCreator</name>
+    <description>Simple module blank creator for Cart-Power developers.</description>
+    <inceptionYear>2023</inceptionYear>
+    <developers>
+        <developer>
+            <id>Shako</id>
+            <name>Evgeniy Ryabov</name>
+            <email>shakowsx@gmail.com</email>
+            <url>https://github.com/shakowsx/</url>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>Russia/Ulyanovsk</timezone>
+        </developer>
+    </developers>
 </project>
