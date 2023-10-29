@@ -17,9 +17,9 @@ Simple module blank creator for Cart-Power developers.
 
 ## 📸Screenshots
 If you don't have write permissions:
-![Write permissions checking](https://awesomescreenshot.s3.amazonaws.com/image/3632808/43726559-bb8676973137e7b2f5f1ee75411d4bf4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20231021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231021T103319Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=67806140920d3a5da4c00fe2f2746c0be3bbb5c734c816795b73bc4bd90c6461)
+![Write permissions checking](https://awesomescreenshot.s3.amazonaws.com/image/3632808/43728139-5df311b700dea5cb6dfb29dee5ee6aa4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20231021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231021T141042Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=649fc962ba7cea1601a9861bbbe28fbb4955b7a7d9c9c0ace8473bf065d07707)
 Creation steps:
-![Creation steps](https://awesomescreenshot.s3.amazonaws.com/image/3632808/43726460-3bef7ab47b5218dfa2f5cb7592b08b2d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20231021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231021T101942Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=d09e20a3685225d9ddc945dc18126c22968068e1824b24ea8ba6462abfeb595b)
+![Creation steps](https://awesomescreenshot.s3.amazonaws.com/image/3632808/43728120-b8aa4ab6d18b4c43a9353ba6aac58d25.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20231021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231021T140751Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=fc325b99532c5ea6fb5886e0e2d6b69fa231614e10b8b2159794f8bed0038ade)
 Folder structure:
 <br>![Folder structure](https://awesomescreenshot.s3.amazonaws.com/image/3632808/43726482-809123b71a03a665b5105f68a8964002.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20231021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231021T102049Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=743bc31dedf6030649c0b4bd2bd460fb52865cb2fc0465cb474a883c058f5518)
 
