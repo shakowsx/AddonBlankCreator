@@ -17,11 +17,11 @@ Simple module blank creator for Cart-Power developers.
 
 ## 📸Screenshots
 If you don't have write permissions:
-![Write permissions checking](https://awesomescreenshot.s3.amazonaws.com/image/3632808/43726559-bb8676973137e7b2f5f1ee75411d4bf4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20231021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231021T103319Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=67806140920d3a5da4c00fe2f2746c0be3bbb5c734c816795b73bc4bd90c6461)
+![Write permissions checking](/screenshots/1-write_permissions_checking.png)
 Creation steps:
-![Creation steps](https://awesomescreenshot.s3.amazonaws.com/image/3632808/43726460-3bef7ab47b5218dfa2f5cb7592b08b2d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20231021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231021T101942Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=d09e20a3685225d9ddc945dc18126c22968068e1824b24ea8ba6462abfeb595b)
+![Creation steps](/screenshots/2-creation_steps.png)
 Folder structure:
-<br>![Folder structure](https://awesomescreenshot.s3.amazonaws.com/image/3632808/43726482-809123b71a03a665b5105f68a8964002.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSCJQ2NM3XLFPVKA%2F20231021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231021T102049Z&X-Amz-Expires=28800&X-Amz-SignedHeaders=host&X-Amz-Signature=743bc31dedf6030649c0b4bd2bd460fb52865cb2fc0465cb474a883c058f5518)
+<br>![Folder structure](/screenshots/3-folder_structure.png)
 
 addon.xml example:
 ```xml
