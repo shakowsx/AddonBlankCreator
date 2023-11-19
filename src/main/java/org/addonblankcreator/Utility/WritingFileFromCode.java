@@ -6,7 +6,26 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ *  This class writes content in Addon files.
+ *  Methods write addon.xml and language variables files using dynamic generated information
+ *  described in their code (text block). To write information in file methods use BufferedWriter.
+ *
+ * @see Addon
+ * @see BufferedWriter
+ */
 public class WritingFileFromCode implements AddonWriter {
+    /**
+     * Writes content in <b>addon.xml</b> file. Uses text block with replace dynamic content.
+     * <ul>
+     * <li>Adds 'addonId' of the Addon in 'id' tag.</li>
+     * </ul>
+     * To write information in file this method uses BufferedWriter.
+     * @param addon addon object.
+     *
+     * @see Addon
+     * @see BufferedWriter
+     */
     public void writeAddonXML(Addon addon) {
         try {
             BufferedWriter writer = new BufferedWriter(
@@ -39,6 +58,21 @@ public class WritingFileFromCode implements AddonWriter {
         }
     }
 
+    /**
+     * Writes content in language variables files (<b>EN</b> and <b>RU</b> lang vars files). Uses text block
+     * with replace dynamic content.
+     * <ul>
+     * <li>for EN lang vars file adds 'addonId', 'addonNameEn', 'addonDescriptionEn',
+     * 'addonDescriptionEndingEn' of the Addon.</li>
+     * <li>for RU lang vars file adds 'addonId', 'addonNameEn', 'addonNameRu', 'addonDescriptionEn',
+     * 'addonDescriptionEndingEn', 'addonDescriptionRu', 'addonDescriptionEndingRu' of the Addon.</li>
+     * </ul>
+     * To write information in file this method uses BufferedWriter.
+     * @param addon addon object.
+     *
+     * @see Addon
+     * @see BufferedWriter
+     */
     public void writeLangVars(Addon addon) {
         try {
             BufferedWriter writerEn = new BufferedWriter(
