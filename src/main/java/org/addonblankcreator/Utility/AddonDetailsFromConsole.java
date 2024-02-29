@@ -21,28 +21,35 @@ public class AddonDetailsFromConsole implements AddonDetails {
      * - If user's input is empty or nothing was inputted at all, then asks to type id again.
      * <p>
      * - Method has a validation process. It asks user to validate his input by typing Y or N letter. Where:
+     * <ul>
      * <li>Y - is Yes, input valid;</li>
      * <li>N - is No, input not valid.</li>
+     * </ul>
      *
-     * @param addon addon object.
+     * @param addon addon for which id should be set.
+     *
      * @see Addon
      * @see Scanner
      */
     public void setAddonId(Addon addon) {
+        //Checking for the entered addon id.
         while (addon.getId().isEmpty()) {
             System.out.println("Введите id модуля с префиксом \"cp_\" (например cp_addon_name):");
             Scanner console = new Scanner(System.in);
 
+            //Deleting all empty spaces at the end of the user's input.
             if (console.hasNextLine()) {
                 addon.setId(console.nextLine().replaceAll("\\s+",""));
             } else return;
 
+            //Checking for empty input or missing data entered.
             if (addon.getId().isEmpty()) {
                 System.out.println("Id модуля не введено. Введите id модуля.");
             } else {
-                String actionConfirm = "";
+                String actionConfirm;
                 boolean valid = false;
 
+                //Requesting the user to confirm the entered data.
                 while (!valid) {
                     System.out.println("Вы уверены, что хотите создать модуль с id \"" + addon.getId() + "\"? Y/N?");
 

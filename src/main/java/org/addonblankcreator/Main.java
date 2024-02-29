@@ -5,7 +5,18 @@ import org.addonblankcreator.Utility.*;
 
 import java.nio.file.Path;
 
+/**
+ * The main class of the program.
+ *
+ * @author Evgeniy Ryabov
+ * @version 0.1
+ */
 public class Main {
+    /**
+     * The main entry point of the program.
+     *
+     * @param args the command line arguments.
+     */
     public static void main(String[] args) {
         // Checking for permission to write to a folder.
         AccessChecker accessChecker = new FileWriteAccess();

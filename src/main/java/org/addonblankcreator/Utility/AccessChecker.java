@@ -3,11 +3,11 @@ package org.addonblankcreator.Utility;
 import java.nio.file.Path;
 
 /**
- * An abstract class that checks for any permissions and access.
- *
+ * Interface that checks for any permissions and access.
  */
 public interface AccessChecker {
     /**
+     * Write permission check method.
      * Checks for write permissions on a file or folder at the specified path
      * and performs actions depending on the result.
      *

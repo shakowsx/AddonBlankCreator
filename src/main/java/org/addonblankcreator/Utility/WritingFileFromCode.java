@@ -21,7 +21,8 @@ public class WritingFileFromCode implements AddonWriter {
      * <li>Adds 'addonId' of the Addon in 'id' tag.</li>
      * </ul>
      * To write information in file this method uses BufferedWriter.
-     * @param addon addon object.
+     *
+     * @param addon addon for which you need to create an XML file.
      *
      * @see Addon
      * @see BufferedWriter
@@ -68,7 +69,8 @@ public class WritingFileFromCode implements AddonWriter {
      * 'addonDescriptionEndingEn', 'addonDescriptionRu', 'addonDescriptionEndingRu' of the Addon.</li>
      * </ul>
      * To write information in file this method uses BufferedWriter.
-     * @param addon addon object.
+     *
+     * @param addon addon for which you need to create language variables.
      *
      * @see Addon
      * @see BufferedWriter
@@ -76,10 +78,13 @@ public class WritingFileFromCode implements AddonWriter {
     public void writeLangVars(Addon addon) {
         try {
             BufferedWriter writerEn = new BufferedWriter(
-                    new FileWriter(addon.getId() + "/var/langs/en/addons/" + addon.getId() + ".po"));
+                    new FileWriter(Addon.FOLDER_STRUCTURE.get("varLangsEnAddons") + "/"
+                            + addon.getId() + ".po"));
             BufferedWriter writerRu = new BufferedWriter(
-                    new FileWriter(addon.getId() + "/var/langs/ru/addons/" + addon.getId() + ".po"));
+                    new FileWriter(Addon.FOLDER_STRUCTURE.get("varLangsRuAddons") + "/"
+                            + addon.getId() + ".po"));
 
+            //Writing an English language variables file.
             writerEn.write("""
                     msgid ""
                     msgstr "Project-Id-Version: tygh"
@@ -102,6 +107,7 @@ public class WritingFileFromCode implements AddonWriter {
             writerEn.close();
             System.out.println("Файл языковой переменной EN языка добавлен...[ok]");
 
+            //Writing a Russian language variables file.
             writerRu.write("""
                     msgid ""
                     msgstr "Project-Id-Version: tygh"
