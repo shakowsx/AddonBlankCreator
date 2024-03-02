@@ -113,9 +113,10 @@ Start the app
 What did I learn while building this project?
 - Improved understanding of creating project structure.
 - Improved understanding of Java code formatting rules (see [Code Conventions for the Java Programming Language]).
-- Familiarized yourself with using interfaces (see [Java Language Specification - Chapter 9. Interfaces], [The Java™ Tutorials]).
-- Familiarized yourself with `HashMap` and `BufferedWriter` (see [HashMap], [BufferedWriter]).
-- Familiarized yourself with copying data from application resources (see [Class InputStream],[Location-Independent Access to Resources]).
+- Familiarized myself with using interfaces (see [Java Language Specification - Chapter 9. Interfaces], [The Java™ Tutorials]).
+- Familiarized myself with `HashMap` and `BufferedWriter` (see [HashMap], [BufferedWriter]).
+- Familiarized myself with copying data from application resources (see [Class InputStream],[Location-Independent Access to Resources]).
+- Familiarized myself with writing comments and generating javadoc (see [javadoc]).
 - Learned about text blocks and their uses (see [Programmer's Guide to Text Blocks]).
 
 What challenges did I face and how did I overcome them?
@@ -133,4 +134,5 @@ What challenges did I face and how did I overcome them?
 [BufferedWriter]: <https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/BufferedWriter.html>
 [Location-Independent Access to Resources]: <https://docs.oracle.com/javase/8/docs/technotes/guides/lang/resources.html>
 [Class InputStream]: <https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/InputStream.html>
+[javadoc]: <https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html>
 [Programmer's Guide to Text Blocks]: <https://docs.oracle.com/en/java/javase/21/text-blocks/index.html>
